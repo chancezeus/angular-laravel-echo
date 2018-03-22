@@ -8,8 +8,11 @@
     "types": []
   },
   "files": [
-    "./index.ts",
-    "./typings.d.ts"
+    "./index.ts"
+  ],
+  "include": [
+    "./*.d.ts",
+    "./**/*.d.ts"
   ],
   "angularCompilerOptions": {
     "annotateForClosureCompiler": true,

@@ -1,6 +1,6 @@
 declare namespace Echo {
-  import {Pusher} from 'pusher-js';
   import * as pusher from 'pusher-js';
+  import {Pusher} from 'pusher-js';
   import * as io from 'socket.io-client';
 
   interface EchoStatic {
@@ -92,20 +92,44 @@ declare namespace Echo {
   }
 
   interface Config {
+    /**
+     * Authentication information for the underlying connector
+     */
     auth?: {
-      headers?: {}
-    },
+      /**
+       * Headers to be included with the request
+       */
+      headers?: { [key: string]: any };
+    };
+    /**
+     * The authentication endpoint
+     */
     authEndpoint?: string;
-    broadcaster?: string;
+    /**
+     * The broadcaster to use
+     */
+    broadcaster?: 'socket.io' | 'pusher';
+    /**
+     * The application CSRF token
+     */
     csrfToken?: string | null;
+    /**
+     * The namespace to use for events
+     */
     namespace?: string;
   }
 
   interface PusherConfig extends Config, pusher.Config {
+    /**
+     * The pusher auth key
+     */
     key?: string | null;
   }
 
   interface SocketIoConfig extends Config, SocketIOClient.ConnectOpts {
+    /**
+     * A reference to the socket.io client to use
+     */
     client?: typeof io;
   }
 
@@ -320,6 +344,13 @@ declare namespace Echo {
   }
 
   interface PrivateChannel extends Channel {
+    /**
+     * Trigger client event on the channel.
+     *
+     * @param {string} event
+     * @param data
+     * @returns {Echo.PrivateChannel}
+     */
     whisper(event: string, data: any): PrivateChannel;
   }
 
@@ -381,21 +412,12 @@ declare namespace Echo {
     unsubscribe(): void;
 
     /**
-     * Listen for an event on the channel instance.
-     *
-     * @param {string} event
-     * @param {pusher.EventCallback} callback
-     * @returns {Echo.PusherChannel}
-     */
-    listen(event: string, callback: pusher.EventCallback): PusherChannel;
-
-    /**
      * Stop listening for an event on the channel instance.
      *
      * @param {string} event
      * @returns {Echo.PusherChannel}
      */
-    stopListening(event: string): PusherChannel;
+    stopListening(event: string): Channel;
 
     /**
      * Bind a channel to an event.
@@ -404,44 +426,13 @@ declare namespace Echo {
      * @param {pusher.EventCallback} callback
      * @returns {Echo.PusherChannel}
      */
-    on(event: string, callback: pusher.EventCallback): PusherChannel;
+    on(event: string, callback: pusher.EventCallback): Channel;
   }
 
   interface PusherPrivateChannel extends PusherChannel, PrivateChannel {
-    /**
-     * Trigger client event on the channel.
-     *
-     * @param {string} eventName
-     * @param data
-     * @returns {Echo.PusherPrivateChannel}
-     */
-    whisper(eventName: string, data: any): PusherPrivateChannel;
   }
 
   interface PusherPresenceChannel extends PusherPrivateChannel, PresenceChannel {
-    /**
-     * Register a callback to be called anytime the member list changes.
-     *
-     * @param {(users: any[]) => void} callback
-     * @returns {Echo.PusherPresenceChannel}
-     */
-    here(callback: (users: any[]) => void): PusherPresenceChannel;
-
-    /**
-     * Listen for someone joining the channel.
-     *
-     * @param {(user: any) => void} callback
-     * @returns {Echo.PusherPresenceChannel}
-     */
-    joining(callback: (user: any) => void): PusherPresenceChannel;
-
-    /**
-     * Listen for someone leaving the channel.
-     *
-     * @param {(user: any) => void} callback
-     * @returns {Echo.PusherPresenceChannel}
-     */
-    leaving(callback: (user: any) => void): PusherPresenceChannel;
   }
 
   interface SocketIoChannel extends Channel {
@@ -476,15 +467,6 @@ declare namespace Echo {
     unsubscribe(): void;
 
     /**
-     * Listen for an event on the channel instance.
-     *
-     * @param {string} event
-     * @param {(event: any) => void} callback
-     * @returns {Echo.SocketIoChannel}
-     */
-    listen(event: string, callback: (event: any) => void): SocketIoChannel;
-
-    /**
      * Bind a channel to an event.
      *
      * @param {string} event
@@ -514,40 +496,9 @@ declare namespace Echo {
   }
 
   interface SocketIoPrivateChannel extends SocketIoChannel, PrivateChannel {
-    /**
-     * Trigger client event on the channel.
-     *
-     * @param {string} eventName
-     * @param data
-     * @returns {Echo.SocketIoPrivateChannel}
-     */
-    whisper(eventName: string, data: any): SocketIoPrivateChannel;
   }
 
   interface SocketIoPresenceChannel extends SocketIoPrivateChannel, PresenceChannel {
-    /**
-     * Register a callback to be called anytime the member list changes.
-     *
-     * @param {(users: any[]) => void} callback
-     * @returns {Echo.SocketIoPresenceChannel}
-     */
-    here(callback: (users: any[]) => void): SocketIoPresenceChannel;
-
-    /**
-     * Listen for someone joining the channel.
-     *
-     * @param {(user: any) => void} callback
-     * @returns {Echo.SocketIoPresenceChannel}
-     */
-    joining(callback: (user: any) => void): SocketIoPresenceChannel;
-
-    /**
-     * Listen for someone leaving the channel.
-     *
-     * @param {(user: any) => void} callback
-     * @returns {Echo.SocketIoPresenceChannel}
-     */
-    leaving(callback: (user: any) => void): SocketIoPresenceChannel;
   }
 
   interface EventFormatter {
@@ -583,6 +534,9 @@ declare namespace Echo {
 
 declare var Echo: Echo.EchoStatic;
 
+/**
+ * @hidden
+ */
 declare module 'laravel-echo' {
   export = Echo;
 }
