@@ -48,79 +48,90 @@ return Promise.resolve()
     const es5Entry = path.join(es5OutputFolder, `${libName}.js`);
     const es2015Entry = path.join(es2015OutputFolder, `${libName}.js`);
     const rollupBaseConfig = {
-      moduleName: camelCase(libName),
-      sourceMap: true,
+      output: {
+        name: camelCase(libName),
+        globals: {
+          // The key here is library name, and the value is the the name of the global variable name
+          // the window object.
+          // See https://github.com/rollup/rollup/wiki/JavaScript-API#globals for more.
+          '@angular/core': 'ng.core',
+          '@angular/common': 'ng.common',
+          'laravel-echo': 'Echo',
+          'pusher-js': 'Pusher',
+          'rxjs': 'Rx',
+          'rxjs/Observable': 'Rx',
+          'rxjs/Subject': 'Rx',
+          'rxjs/ReplaySubject': 'Rx',
+          'socket.io-client': 'io',
+        },
+        sourceMap: true,
+      },
       // ATTENTION:
       // Add any dependency or peer dependency your library to `globals` and `external`.
       // This is required for UMD bundle users.
-      globals: {
-        // The key here is library name, and the value is the the name of the global variable name
-        // the window object.
-        // See https://github.com/rollup/rollup/wiki/JavaScript-API#globals for more.
-        '@angular/core': 'ng.core',
-        '@angular/common': 'ng.common',
-        'laravel-echo': 'Echo',
-        'rxjs': 'Rx',
-        'rxjs/Observable': 'Rx',
-        'rxjs/Subject': 'Rx',
-        'rxjs/ReplaySubject': 'Rx',
-        'socket.io-client': 'io',
-        'pusher-js': 'Pusher'
-      },
       external: [
         // List of dependencies
         // See https://github.com/rollup/rollup/wiki/JavaScript-API#external for more.
         '@angular/core',
         '@angular/common',
         'laravel-echo',
+        'pusher-js',
         'rxjs',
         'rxjs/Observable',
         'rxjs/Subject',
         'rxjs/ReplaySubject',
         'socket.io-client',
-        'pusher-js'
       ],
       plugins: [
-        nodeResolve({jsnext: true, module: true}),
-        commonjs({
+        nodeResolve({jsnext: true, module: true, browser: true}),
+        commonjs(/*{
           include: [
-            'node_modules/socket.io-client/**',
-            'node_modules/pusher-js/**',
-            'node_modules/laravel-echo/**',
-            'node_modules/rxjs/**'
+            'node_modules/!**',
+            // 'node_modules/laravel-echo/!**',
+            // 'node_modules/pusher-js/!**',
+            // 'node_modules/rxjs/!**',
+            // 'node_modules/socket.io-client/!**'
           ]
-        }),
+        }*/),
         sourcemaps(),
       ]
     };
 
     // UMD bundle.
     const umdConfig = Object.assign({}, rollupBaseConfig, {
-      entry: es5Entry,
-      dest: path.join(distFolder, `bundles`, `${libName}.umd.js`),
-      format: 'umd',
+      input: es5Entry,
+      output: Object.assign({}, rollupBaseConfig.output, {
+        file: path.join(distFolder, `bundles`, `${libName}.umd.js`),
+        format: 'umd',
+      }),
     });
 
     // Minified UMD bundle.
     const minifiedUmdConfig = Object.assign({}, rollupBaseConfig, {
-      entry: es5Entry,
-      dest: path.join(distFolder, `bundles`, `${libName}.umd.min.js`),
-      format: 'umd',
+      input: es5Entry,
+      output: Object.assign({}, rollupBaseConfig.output, {
+        file: path.join(distFolder, `bundles`, `${libName}.umd.min.js`),
+        format: 'umd',
+      }),
       plugins: rollupBaseConfig.plugins.concat([uglify({})])
     });
 
     // ESM+ES5 flat module bundle.
     const esm5config = Object.assign({}, rollupBaseConfig, {
-      entry: es5Entry,
-      dest: path.join(distFolder, `${libName}.es5.js`),
-      format: 'es'
+      input: es5Entry,
+      output: Object.assign({}, rollupBaseConfig.output, {
+        file: path.join(distFolder, `${libName}.es5.js`),
+        format: 'es',
+      }),
     });
 
     // ESM+ES2015 flat module bundle.
     const esm2015config = Object.assign({}, rollupBaseConfig, {
-      entry: es2015Entry,
-      dest: path.join(distFolder, `${libName}.js`),
-      format: 'es'
+      input: es2015Entry,
+      output: Object.assign({}, rollupBaseConfig.output, {
+        file: path.join(distFolder, `${libName}.js`),
+        format: 'es',
+      }),
     });
 
     const allBundles = [
@@ -128,7 +139,7 @@ return Promise.resolve()
       minifiedUmdConfig,
       esm5config,
       esm2015config
-    ].map(cfg => rollup.rollup(cfg).then(bundle => bundle.write(cfg)));
+    ].map(cfg => rollup.rollup(cfg).then(bundle => bundle.write(cfg.output)));
 
     return Promise.all(allBundles)
       .then(() => console.log('All bundles generated successfully.'))

@@ -35,7 +35,7 @@
     "doc": "npm run doc:dist && npm run doc:pages",
     "doc:dist": "typedoc --out ./dist/docs --mode file --includeDeclarations --excludeExternals --excludePrivate --excludeProtected --module es2015 --target es5 --name \"Angular Laravel Echo\" --hideGenerator ./src/lib",
     "doc:pages": "typedoc --out ../gh-pages --mode file --includeDeclarations --excludeExternals --excludePrivate --excludeProtected --module es2015 --target es5 --name \"Angular Laravel Echo\" --hideGenerator ./src/lib --disableOutputCheck",
-    "lint": "tslint ./src/**/*.ts -t -verbose",
+    "lint": "tslint --project tslint.json ./src/**/*.ts",
     "release": "npm run lint && standard-version && npm run build && npm run doc"
   },
   "devDependencies": {
@@ -52,18 +52,18 @@
     "laravel-echo": "^1.3.5",
     "pusher-js": "^4.2.2",
     "rimraf": "^2.6.1",
-    "rollup": "^0.42.0",
-    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup": "^0.57.1",
+    "rollup-plugin-commonjs": "^9.1.0",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-sourcemaps": "^0.4.1",
-    "rollup-plugin-uglify": "^2.0.1",
+    "rollup-plugin-uglify": "^3.0.0",
     "rxjs": "^5.5.2",
     "socket.io-client": "^2.0.4",
     "standard-version": "^4.0.0",
-    "systemjs": "^0.19.40",
-    "tslint": "^4.4.2",
+    "systemjs": "^0.21.0",
+    "tslint": "^5.9.1",
     "typedoc": "^0.11.1",
-    "typescript": "~2.4.2",
+    "typescript": "~2.7.2",
     "zone.js": "^0.8.4"
   },
   "peerDependencies": {
