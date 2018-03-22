@@ -32,9 +32,11 @@
     "clean": "rimraf out-tsc dist/*",
     "prebuild": "npm run clean",
     "build": "node build.js",
-    "doc": "typedoc --out ./dist/docs --mode file --includeDeclarations --excludeExternals --excludePrivate --excludeProtected --module es2015 --target es5 --name \"Angular Laravel Echo\" --hideGenerator ./src/lib",
+    "doc": "npm run doc:dist && npm run doc:pages",
+    "doc:dist": "typedoc --out ./dist/docs --mode file --includeDeclarations --excludeExternals --excludePrivate --excludeProtected --module es2015 --target es5 --name \"Angular Laravel Echo\" --hideGenerator ./src/lib",
+    "doc:pages": "typedoc --out ../gh-pages --mode file --includeDeclarations --excludeExternals --excludePrivate --excludeProtected --module es2015 --target es5 --name \"Angular Laravel Echo\" --hideGenerator ./src/lib --disableOutputCheck",
     "lint": "tslint ./src/**/*.ts -t -verbose",
-    "release": "npm run lint && npm run build && npm run doc && standard-version"
+    "release": "npm run lint && standard-version && npm run build && npm run doc"
   },
   "devDependencies": {
     "@angular/common": "^5.0.3",

@@ -131,6 +131,10 @@ declare namespace Echo {
      * A reference to the socket.io client to use
      */
     client?: typeof io;
+    /**
+     * The url of the laravel echo server instance
+     */
+    host: string;
   }
 
   interface Connector {
