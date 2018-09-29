@@ -2,6 +2,7 @@ import {Inject, Injectable, InjectionToken, NgZone} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {ReplaySubject} from 'rxjs/ReplaySubject';
 import {Subject} from 'rxjs/Subject';
+import {_throw as throwError} from 'rxjs/observable/throw';
 import * as Echo from 'laravel-echo';
 import * as io from 'socket.io-client';
 
@@ -269,43 +270,49 @@ export class EchoService {
     this.channels.push(channel);
 
     echoChannel.here((users: any[]) => {
-      if (channel) {
-        channel.users = users;
+      this.ngZone.run(() => {
+        if (channel) {
+          channel.users = users;
 
-        if (channel.listeners['_users_']) {
-          channel.listeners['_users_'].next(JSON.parse(JSON.stringify(users)));
+          if (channel.listeners['_users_']) {
+            channel.listeners['_users_'].next(JSON.parse(JSON.stringify(users)));
+          }
         }
-      }
+      });
     });
 
     echoChannel.joining((user: any) => {
-      if (channel) {
-        channel.users = channel.users || [];
-        channel.users.push(user);
+      this.ngZone.run(() => {
+        if (channel) {
+          channel.users = channel.users || [];
+          channel.users.push(user);
 
-        if (channel.listeners['_joining_']) {
-          channel.listeners['_joining_'].next(JSON.parse(JSON.stringify(user)));
+          if (channel.listeners['_joining_']) {
+            channel.listeners['_joining_'].next(JSON.parse(JSON.stringify(user)));
+          }
         }
-      }
+      });
     });
 
     echoChannel.leaving((user: any) => {
-      if (channel) {
-        channel.users = channel.users || [];
+      this.ngZone.run(() => {
+        if (channel) {
+          channel.users = channel.users || [];
 
-        const existing = channel.users.find(existing => existing == user);
-        if (existing) {
-          const index = channel.users.indexOf(existing);
+          const existing = channel.users.find(existing => existing == user);
+          if (existing) {
+            const index = channel.users.indexOf(existing);
 
-          if (index !== -1) {
-            channel.users.splice(index, 1);
+            if (index !== -1) {
+              channel.users.splice(index, 1);
+            }
+          }
+
+          if (channel.listeners['_leaving_']) {
+            channel.listeners['_leaving_'].next(JSON.parse(JSON.stringify(user)));
           }
         }
-
-        if (channel.listeners['_leaving_']) {
-          channel.listeners['_leaving_'].next(JSON.parse(JSON.stringify(user)));
-        }
-      }
+      });
     });
 
     return echoChannel;
@@ -464,7 +471,7 @@ export class EchoService {
   listenForWhisper(name: string, event: string): Observable<any> {
     const channel = this.requireChannelFromArray(name);
     if (channel.type === 'public') {
-      throw new Error('Whisper is not available on public channels');
+      return throwError(new Error('Whisper is not available on public channels'));
     }
 
     if (!channel.listeners[`_whisper_${event}_`]) {
