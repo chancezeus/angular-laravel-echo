@@ -63,6 +63,39 @@
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
 				<h1 id="angular-laravel-echo">Angular Laravel Echo</h1>
+				<p>This package is a simple service to allow easy integration of Laravel Echo into angular. The service tries to follow the general functionality
+					of Laravel Echo as closely as possible. The most important difference is the use of Observable streams instead of callbacks for events/notifications,
+				this simplifies integration into Angular a lot and (more importantly) makes sure only one listener per subscribed event/notification has to be created.</p>
+				<p>One important note is that (since Laravel Echo itself does not supply a way to stop listening for events) you must make sure to call leave for any channel
+				that is no longer required, not just unsubscribe the event subscriptions (otherwise a memory leak will occur).</p>
+				<h1 id="versions">Versions</h1>
+				<p>With the release of Angular 6.0, breaking changes were introduced in the form of the updated dependency on RxJS 6 so consult
+				the following chart for what version of the package to use based on your version of Angular.</p>
+				<table>
+					<thead>
+						<tr>
+							<th style="text-align:center">Angular Version</th>
+							<th style="text-align:center">Package Version</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td style="text-align:center">>= 6.0</td>
+							<td style="text-align:center">2.*</td>
+						</tr>
+						<tr>
+							<td style="text-align:center">&lt; 6.0</td>
+							<td style="text-align:center">1.*</td>
+						</tr>
+					</tbody>
+				</table>
+				<h1 id="documentation">Documentation</h1>
+				<p>Documentation for the module is available on github pages at <a href="https://chancezeus.github.io/angular-laravel-echo/">https://chancezeus.github.io/angular-laravel-echo/</a></p>
+				<h1 id="contributors">Contributors</h1>
+				<ul>
+					<li><a href="https://github.com/chancezeus">ChanceZeus</a>: Initial author of the package</li>
+					<li><a href="https://github.com/Wizofgoz">Wizofgoz</a>: Angular 6+ support</li>
+				</ul>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
