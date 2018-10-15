@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>PusherPrivateChannel | Angular Laravel Echo</title>
+	<title>NullChannel | Angular Laravel Echo</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -57,10 +57,10 @@
 					<a href="../modules/echo.html">Echo</a>
 				</li>
 				<li>
-					<a href="echo.pusherprivatechannel.html">PusherPrivateChannel</a>
+					<a href="echo.nullchannel.html">NullChannel</a>
 				</li>
 			</ul>
-			<h1>Interface PusherPrivateChannel</h1>
+			<h1>Interface NullChannel</h1>
 		</div>
 	</div>
 </header>
@@ -71,53 +71,17 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="echo.pusherchannel.html" class="tsd-signature-type">PusherChannel</a>
-					</li>
-					<li>
-						<a href="echo.privatechannel.html" class="tsd-signature-type">PrivateChannel</a>
+						<a href="echo.channel.html" class="tsd-signature-type">Channel</a>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">PusherPrivateChannel</span>
+								<span class="target">NullChannel</span>
 								<ul class="tsd-hierarchy">
 									<li>
-										<a href="echo.pusherpresencechannel.html" class="tsd-signature-type">PusherPresenceChannel</a>
+										<a href="echo.nullprivatechannel.html" class="tsd-signature-type">NullPrivateChannel</a>
 									</li>
 								</ul>
 							</li>
 						</ul>
-					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel">
-				<h3 class="tsd-before-signature">Callable</h3>
-				<ul class="tsd-signatures tsd-kind-interface tsd-parent-kind-module">
-					<li class="tsd-signature tsd-kind-icon">__call<span class="tsd-signature-symbol">(</span>pusher<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Pusher</span>, name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="echo.pusherchannel.html" class="tsd-signature-type">PusherChannel</a></li>
-				</ul>
-				<ul class="tsd-descriptions">
-					<li class="tsd-description">
-						<aside class="tsd-sources">
-							<ul>
-								<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/laravel-echo.d.ts#L508">laravel-echo.d.ts:508</a></li>
-							</ul>
-						</aside>
-						<div class="tsd-comment tsd-typography">
-							<div class="lead">
-								<p>Create a new class instance.</p>
-							</div>
-						</div>
-						<h4 class="tsd-parameters-title">Parameters</h4>
-						<ul class="tsd-parameters">
-							<li>
-								<h5>pusher: <span class="tsd-signature-type">Pusher</span></h5>
-							</li>
-							<li>
-								<h5>name: <span class="tsd-signature-type">string</span></h5>
-							</li>
-							<li>
-								<h5>options: <span class="tsd-signature-type">any</span></h5>
-							</li>
-						</ul>
-						<h4 class="tsd-returns-title">Returns <a href="echo.pusherchannel.html" class="tsd-signature-type">PusherChannel</a></h4>
 					</li>
 				</ul>
 			</section>
@@ -128,24 +92,21 @@
 						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited"><a href="echo.pusherprivatechannel.html#eventformatter" class="tsd-kind-icon">event<wbr>Formatter</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited"><a href="echo.pusherprivatechannel.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited"><a href="echo.pusherprivatechannel.html#options" class="tsd-kind-icon">options</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="echo.pusherprivatechannel.html#pusher" class="tsd-kind-icon">pusher</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="echo.pusherprivatechannel.html#subscription" class="tsd-kind-icon">subscription</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="echo.nullchannel.html#eventformatter" class="tsd-kind-icon">event<wbr>Formatter</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="echo.nullchannel.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="echo.nullchannel.html#options" class="tsd-kind-icon">options</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-inherited">
+						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited"><a href="echo.pusherprivatechannel.html#listen" class="tsd-kind-icon">listen</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited"><a href="echo.pusherprivatechannel.html#listenforwhisper" class="tsd-kind-icon">listen<wbr>For<wbr>Whisper</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited"><a href="echo.pusherprivatechannel.html#notification" class="tsd-kind-icon">notification</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="echo.pusherprivatechannel.html#on" class="tsd-kind-icon">on</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="echo.pusherprivatechannel.html#stoplistening" class="tsd-kind-icon">stop<wbr>Listening</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="echo.pusherprivatechannel.html#subscribe" class="tsd-kind-icon">subscribe</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="echo.pusherprivatechannel.html#unsubscribe" class="tsd-kind-icon">unsubscribe</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="echo.pusherprivatechannel.html#whisper" class="tsd-kind-icon">whisper</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="echo.nullchannel.html#listen" class="tsd-kind-icon">listen</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="echo.nullchannel.html#listenforwhisper" class="tsd-kind-icon">listen<wbr>For<wbr>Whisper</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="echo.nullchannel.html#notification" class="tsd-kind-icon">notification</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="echo.nullchannel.html#on" class="tsd-kind-icon">on</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="echo.nullchannel.html#stoplistening" class="tsd-kind-icon">stop<wbr>Listening</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="echo.nullchannel.html#subscribe" class="tsd-kind-icon">subscribe</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="echo.nullchannel.html#unsubscribe" class="tsd-kind-icon">unsubscribe</a></li>
 							</ul>
 						</section>
 					</div>
@@ -153,13 +114,12 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="eventformatter" class="tsd-anchor"></a>
 					<h3>event<wbr>Formatter</h3>
 					<div class="tsd-signature tsd-kind-icon">event<wbr>Formatter<span class="tsd-signature-symbol">:</span> <a href="echo.eventformatter.html" class="tsd-signature-type">EventFormatter</a></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="echo.channel.html">Channel</a>.<a href="echo.channel.html#eventformatter">eventFormatter</a></p>
-						<p>Overrides <a href="echo.channel.html">Channel</a>.<a href="echo.channel.html#eventformatter">eventFormatter</a></p>
 						<ul>
 							<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/laravel-echo.d.ts#L398">laravel-echo.d.ts:398</a></li>
 						</ul>
@@ -170,13 +130,12 @@
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="name" class="tsd-anchor"></a>
 					<h3>name</h3>
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="echo.channel.html">Channel</a>.<a href="echo.channel.html#name">name</a></p>
-						<p>Overrides <a href="echo.channel.html">Channel</a>.<a href="echo.channel.html#name">name</a></p>
 						<ul>
 							<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/laravel-echo.d.ts#L388">laravel-echo.d.ts:388</a></li>
 						</ul>
@@ -187,13 +146,12 @@
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="options" class="tsd-anchor"></a>
 					<h3>options</h3>
 					<div class="tsd-signature tsd-kind-icon">options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="echo.channel.html">Channel</a>.<a href="echo.channel.html#options">options</a></p>
-						<p>Overrides <a href="echo.channel.html">Channel</a>.<a href="echo.channel.html#options">options</a></p>
 						<ul>
 							<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/laravel-echo.d.ts#L393">laravel-echo.d.ts:393</a></li>
 						</ul>
@@ -204,52 +162,19 @@
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="pusher" class="tsd-anchor"></a>
-					<h3>pusher</h3>
-					<div class="tsd-signature tsd-kind-icon">pusher<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Pusher</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="echo.pusherchannel.html">PusherChannel</a>.<a href="echo.pusherchannel.html#pusher">pusher</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/laravel-echo.d.ts#L503">laravel-echo.d.ts:503</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The pusher client instance</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="subscription" class="tsd-anchor"></a>
-					<h3>subscription</h3>
-					<div class="tsd-signature tsd-kind-icon">subscription<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">pusher.Channel</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="echo.pusherchannel.html">PusherChannel</a>.<a href="echo.pusherchannel.html#subscription">subscription</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/laravel-echo.d.ts#L508">laravel-echo.d.ts:508</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The subscription of the channel.</p>
-						</div>
-					</div>
-				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
 					<a name="listen" class="tsd-anchor"></a>
 					<h3>listen</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">listen<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="echo.channel.html" class="tsd-signature-type">Channel</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="echo.channel.html">Channel</a>.<a href="echo.channel.html#listen">listen</a></p>
-								<p>Overrides <a href="echo.channel.html">Channel</a>.<a href="echo.channel.html#listen">listen</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/laravel-echo.d.ts#L407">laravel-echo.d.ts:407</a></li>
 								</ul>
@@ -290,17 +215,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
 					<a name="listenforwhisper" class="tsd-anchor"></a>
 					<h3>listen<wbr>For<wbr>Whisper</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">listen<wbr>For<wbr>Whisper<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="echo.channel.html" class="tsd-signature-type">Channel</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="echo.channel.html">Channel</a>.<a href="echo.channel.html#listenforwhisper">listenForWhisper</a></p>
-								<p>Overrides <a href="echo.channel.html">Channel</a>.<a href="echo.channel.html#listenforwhisper">listenForWhisper</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/laravel-echo.d.ts#L424">laravel-echo.d.ts:424</a></li>
 								</ul>
@@ -341,17 +265,16 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
 					<a name="notification" class="tsd-anchor"></a>
 					<h3>notification</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">notification<span class="tsd-signature-symbol">(</span>callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="echo.channel.html" class="tsd-signature-type">Channel</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="echo.channel.html">Channel</a>.<a href="echo.channel.html#notification">notification</a></p>
-								<p>Overrides <a href="echo.channel.html">Channel</a>.<a href="echo.channel.html#notification">notification</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/laravel-echo.d.ts#L415">laravel-echo.d.ts:415</a></li>
 								</ul>
@@ -389,18 +312,17 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
 					<a name="on" class="tsd-anchor"></a>
 					<h3>on</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">on<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">pusher.EventCallback</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="echo.channel.html" class="tsd-signature-type">Channel</a></li>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">on<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Null.EventCallback</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="echo.channel.html" class="tsd-signature-type">Channel</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="echo.pusherchannel.html">PusherChannel</a>.<a href="echo.pusherchannel.html#on">on</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/laravel-echo.d.ts#L545">laravel-echo.d.ts:545</a></li>
+									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/laravel-echo.d.ts#L490">laravel-echo.d.ts:490</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -414,25 +336,24 @@
 									<h5>event: <span class="tsd-signature-type">string</span></h5>
 								</li>
 								<li>
-									<h5>callback: <span class="tsd-signature-type">pusher.EventCallback</span></h5>
+									<h5>callback: <span class="tsd-signature-type">Null.EventCallback</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="echo.channel.html" class="tsd-signature-type">Channel</a></h4>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
 					<a name="stoplistening" class="tsd-anchor"></a>
 					<h3>stop<wbr>Listening</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
 						<li class="tsd-signature tsd-kind-icon">stop<wbr>Listening<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="echo.channel.html" class="tsd-signature-type">Channel</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="echo.pusherchannel.html">PusherChannel</a>.<a href="echo.pusherchannel.html#stoplistening">stopListening</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/laravel-echo.d.ts#L536">laravel-echo.d.ts:536</a></li>
+									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/laravel-echo.d.ts#L481">laravel-echo.d.ts:481</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -450,81 +371,47 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
 					<a name="subscribe" class="tsd-anchor"></a>
 					<h3>subscribe</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
 						<li class="tsd-signature tsd-kind-icon">subscribe<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="echo.pusherchannel.html">PusherChannel</a>.<a href="echo.pusherchannel.html#subscribe">subscribe</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/laravel-echo.d.ts#L523">laravel-echo.d.ts:523</a></li>
+									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/laravel-echo.d.ts#L468">laravel-echo.d.ts:468</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Subscribe to a Pusher channel.</p>
+									<p>Subscribe to a Null channel.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
 					<a name="unsubscribe" class="tsd-anchor"></a>
 					<h3>unsubscribe</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
 						<li class="tsd-signature tsd-kind-icon">unsubscribe<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="echo.pusherchannel.html">PusherChannel</a>.<a href="echo.pusherchannel.html#unsubscribe">unsubscribe</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/laravel-echo.d.ts#L528">laravel-echo.d.ts:528</a></li>
+									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/laravel-echo.d.ts#L473">laravel-echo.d.ts:473</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Unsubscribe from a Pusher channel.</p>
+									<p>Unsubscribe from a Null channel.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
-					<a name="whisper" class="tsd-anchor"></a>
-					<h3>whisper</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">whisper<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="echo.privatechannel.html" class="tsd-signature-type">PrivateChannel</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<p>Inherited from <a href="echo.privatechannel.html">PrivateChannel</a>.<a href="echo.privatechannel.html#whisper">whisper</a></p>
-								<ul>
-									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/laravel-echo.d.ts#L435">laravel-echo.d.ts:435</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Trigger client event on the channel.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>event: <span class="tsd-signature-type">string</span></h5>
-								</li>
-								<li>
-									<h5>data: <span class="tsd-signature-type">any</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="echo.privatechannel.html" class="tsd-signature-type">PrivateChannel</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -558,9 +445,45 @@
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="echo.eventformatter.html" class="tsd-kind-icon">Event<wbr>Formatter</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-module">
 						<a href="echo.nullchannel.html" class="tsd-kind-icon">Null<wbr>Channel</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="echo.nullchannel.html#eventformatter" class="tsd-kind-icon">event<wbr>Formatter</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="echo.nullchannel.html#name" class="tsd-kind-icon">name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="echo.nullchannel.html#options" class="tsd-kind-icon">options</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+								<a href="echo.nullchannel.html#listen" class="tsd-kind-icon">listen</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+								<a href="echo.nullchannel.html#listenforwhisper" class="tsd-kind-icon">listen<wbr>For<wbr>Whisper</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+								<a href="echo.nullchannel.html#notification" class="tsd-kind-icon">notification</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="echo.nullchannel.html#on" class="tsd-kind-icon">on</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="echo.nullchannel.html#stoplistening" class="tsd-kind-icon">stop<wbr>Listening</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="echo.nullchannel.html#subscribe" class="tsd-kind-icon">subscribe</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="echo.nullchannel.html#unsubscribe" class="tsd-kind-icon">unsubscribe</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="echo.nullconfig.html" class="tsd-kind-icon">Null<wbr>Config</a>
 					</li>
@@ -591,54 +514,9 @@
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="echo.pusherpresencechannel.html" class="tsd-kind-icon">Pusher<wbr>Presence<wbr>Channel</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-module">
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="echo.pusherprivatechannel.html" class="tsd-kind-icon">Pusher<wbr>Private<wbr>Channel</a>
-						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
-								<a href="echo.pusherprivatechannel.html#eventformatter" class="tsd-kind-icon">event<wbr>Formatter</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
-								<a href="echo.pusherprivatechannel.html#name" class="tsd-kind-icon">name</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
-								<a href="echo.pusherprivatechannel.html#options" class="tsd-kind-icon">options</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="echo.pusherprivatechannel.html#pusher" class="tsd-kind-icon">pusher</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="echo.pusherprivatechannel.html#subscription" class="tsd-kind-icon">subscription</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
-								<a href="echo.pusherprivatechannel.html#listen" class="tsd-kind-icon">listen</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
-								<a href="echo.pusherprivatechannel.html#listenforwhisper" class="tsd-kind-icon">listen<wbr>For<wbr>Whisper</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
-								<a href="echo.pusherprivatechannel.html#notification" class="tsd-kind-icon">notification</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
-								<a href="echo.pusherprivatechannel.html#on" class="tsd-kind-icon">on</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
-								<a href="echo.pusherprivatechannel.html#stoplistening" class="tsd-kind-icon">stop<wbr>Listening</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
-								<a href="echo.pusherprivatechannel.html#subscribe" class="tsd-kind-icon">subscribe</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
-								<a href="echo.pusherprivatechannel.html#unsubscribe" class="tsd-kind-icon">unsubscribe</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
-								<a href="echo.pusherprivatechannel.html#whisper" class="tsd-kind-icon">whisper</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="echo.socketiochannel.html" class="tsd-kind-icon">Socket<wbr>IoChannel</a>
 					</li>
