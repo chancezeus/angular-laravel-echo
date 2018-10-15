@@ -146,13 +146,14 @@ class TypeFormatter {
  */
 @Injectable()
 export class EchoService {
-  private echo: Echo.EchoStatic;
   private options: Echo.Config;
   private typeFormatter: TypeFormatter;
 
   private channels: Array<Channel> = [];
   private userChannelName: string | null = null;
   private notificationListeners: { [key: string]: Subject<any> } = {};
+
+  echo: Echo.EchoStatic;
 
   /**
    * Create a new service instance.
