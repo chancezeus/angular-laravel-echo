@@ -1,6 +1,6 @@
 {
   "name": "angular-laravel-echo",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "A Angular service for Laravel Echo",
   "main": "./bundles/angular-laravel-echo.umd.js",
   "module": "./angular-laravel-echo.es5.js",
