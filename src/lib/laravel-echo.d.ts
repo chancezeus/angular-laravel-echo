@@ -7,7 +7,7 @@ declare namespace Echo {
     /**
      * The broadcasting connector.
      */
-    connector: Echo.PusherConnector | Echo.SocketIoConnector;
+    connector: Echo.PusherConnector | Echo.SocketIoConnector | Echo.NullConnector;
 
     /**
      * The echo options.
@@ -108,7 +108,7 @@ declare namespace Echo {
     /**
      * The broadcaster to use
      */
-    broadcaster?: 'socket.io' | 'pusher';
+    broadcaster: 'socket.io' | 'pusher' | 'null';
     /**
      * The application CSRF token
      */
@@ -119,7 +119,18 @@ declare namespace Echo {
     namespace?: string;
   }
 
+  interface NullConfig extends Config {
+    broadcaster: 'null';
+  }
+
   interface PusherConfig extends Config, pusher.Config {
+    broadcaster: 'pusher';
+
+    /**
+     * A pusher client instance to use
+     */
+    client?: Pusher;
+
     /**
      * The pusher auth key
      */
@@ -127,10 +138,13 @@ declare namespace Echo {
   }
 
   interface SocketIoConfig extends Config, SocketIOClient.ConnectOpts {
+    broadcaster: 'socket.io';
+
     /**
      * A reference to the socket.io client to use
      */
-    client?: typeof io;
+    client?: SocketIOClientStatic;
+
     /**
      * The url of the laravel echo server instance
      */
@@ -215,11 +229,63 @@ declare namespace Echo {
     disconnect(): void;
   }
 
+  interface NullConnector extends Connector {
+    /**
+     * Create a new class instance.
+     *
+     * @param {Echo.NullConfig} options
+     * @returns {Echo.NullConnector}
+     */
+    (options: NullConfig): Connector;
+
+    /**
+     * Listen for an event on a channel instance.
+     *
+     * @param {string} name
+     * @param {string} event
+     * @param {pusher.EventCallback} callback
+     * @returns {Echo.PusherChannel}
+     */
+    listen(name: string, event: string, callback: pusher.EventCallback): NullChannel;
+
+    /**
+     * Get a channel instance by name.
+     *
+     * @param {string} name
+     * @returns {Echo.PusherChannel}
+     */
+    channel(name: string): NullChannel;
+
+    /**
+     * Get a private channel instance by name.
+     *
+     * @param {string} name
+     * @returns {Echo.PusherPrivateChannel}
+     */
+    privateChannel(name: string): NullPrivateChannel;
+
+    /**
+     * Get a presence channel instance by name.
+     *
+     * @param {string} name
+     * @returns {Echo.PusherPresenceChannel}
+     */
+    presenceChannel(name: string): NullPresenceChannel;
+  }
+
   interface PusherConnector extends Connector {
     /**
      * The Pusher instance.
      */
     pusher: Pusher;
+
+    /**
+     * Create a new class instance.
+     *
+     * @param {Echo.PusherConfig} options
+     * @returns {Echo.PusherConnector}
+     */
+    (options: PusherConfig): Connector;
 
     /**
      * Listen for an event on a channel instance.
@@ -260,14 +326,22 @@ declare namespace Echo {
     /**
      * The Socket.io connection instance.
      */
-    socket: io;
+    socket: SocketIOClient.Socket;
+
+    /**
+     * Create a new class instance.
+     *
+     * @param {Echo.SocketIoConfig} options
+     * @returns {Echo.SocketIoConnector}
+     */
+    (options: SocketIoConfig): Connector;
 
     /**
      * Get socket.io module from global scope or options.
      *
      * @returns {typeof io}
      */
-    getSocketIO(): typeof io;
+    getSocketIO(): SocketIOClientStatic;
 
     /**
      * Listen for an event on a channel instance.
@@ -382,6 +456,41 @@ declare namespace Echo {
      * @returns {Echo.PresenceChannel}
      */
     leaving(callback: (user: any) => void): PresenceChannel;
+  }
+
+  interface NullChannel extends Channel {
+    /**
+     * Subscribe to a Null channel.
+     */
+    subscribe(): void;
+
+    /**
+     * Unsubscribe from a Null channel.
+     */
+    unsubscribe(): void;
+
+    /**
+     * Stop listening for an event on the channel instance.
+     *
+     * @param {string} event
+     * @returns {Echo.NullChannel}
+     */
+    stopListening(event: string): Channel;
+
+    /**
+     * Bind a channel to an event.
+     *
+     * @param {string} event
+     * @param {Null.EventCallback} callback
+     * @returns {Echo.NullChannel}
+     */
+    on(event: string, callback: Null.EventCallback): Channel;
+  }
+
+  interface NullPrivateChannel extends NullChannel, PrivateChannel {
+  }
+
+  interface NullPresenceChannel extends NullPrivateChannel, PresenceChannel {
   }
 
   interface PusherChannel extends Channel {

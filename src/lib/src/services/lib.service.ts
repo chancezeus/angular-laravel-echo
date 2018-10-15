@@ -29,6 +29,13 @@ export interface EchoConfig {
   options: Echo.Config;
 }
 
+export interface NullEchoConfig extends EchoConfig {
+  /**
+   * Laravel Echo configuration
+   */
+  options: Echo.NullConfig;
+}
+
 export interface PusherEchoConfig extends EchoConfig {
   /**
    * Laravel Echo configuration
@@ -149,13 +156,14 @@ class TypeFormatter {
  */
 @Injectable()
 export class EchoService {
-  private echo: Echo.EchoStatic;
-  private options: Echo.Config;
-  private typeFormatter: TypeFormatter;
+  private readonly _echo: Echo.EchoStatic;
+  private readonly options: Echo.Config;
+  private readonly typeFormatter: TypeFormatter;
 
-  private channels: Array<Channel> = [];
+  private readonly channels: Array<Channel> = [];
+  private readonly notificationListeners: { [key: string]: Subject<any> } = {};
+
   private userChannelName: string | null = null;
-  private notificationListeners: { [key: string]: Subject<any> } = {};
 
   /**
    * Create a new service instance.
@@ -172,11 +180,34 @@ export class EchoService {
       }, options);
     }
 
-    this.echo = new Echo(options);
+    this._echo = new Echo(options);
 
     this.options = this.echo.connector.options;
 
     this.typeFormatter = new TypeFormatter(config.notificationNamespace);
+  }
+
+  /**
+   * Is the socket connected
+   */
+  get connected(): boolean {
+    if (this.options.broadcaster === 'null') {
+      // Null broadcaster is always connected
+      return true;
+    }
+
+    if (this.options.broadcaster === 'pusher') {
+      return (<Echo.PusherConnector>this._echo.connector).pusher.connection.state === 'connected';
+    }
+
+    return (<Echo.SocketIoConnector>this._echo.connector).socket.connected;
+  }
+
+  /**
+   * The echo instance, can be used to implement any custom requirements outside of this service (remember to include NgZone.run calls)
+   */
+  get echo(): Echo.EchoStatic {
+    return this._echo;
   }
 
   /**
