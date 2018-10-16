@@ -1,0 +1,10 @@
+/.github/
+/node_modules/
+/out-tsc/
+/src/
+/.editorconfig
+/.gitignore
+/build.js
+/inline-resources.js
+/tsconfig.json
+/tslint.json
