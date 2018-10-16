@@ -146,6 +146,7 @@ return Promise.resolve()
   })
   // Copy package files
   .then(() => Promise.resolve()
+    .then(() => _relativeCopy('laravel-echo.d.ts', path.join(rootFolder, 'src', 'lib'), distFolder))
     .then(() => _relativeCopy('LICENSE', rootFolder, distFolder))
     .then(() => _relativeCopy('package.json', rootFolder, distFolder))
     .then(() => _relativeCopy('README.md', rootFolder, distFolder))
