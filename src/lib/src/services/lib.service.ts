@@ -162,6 +162,8 @@ export class EchoService {
 
   private userChannelName: string | null = null;
 
+  connectionStateObserver: Subject<string> | null = null;
+
   /**
    * Create a new service instance.
    *
@@ -182,6 +184,30 @@ export class EchoService {
     this.options = this.echo.connector.options;
 
     this.typeFormatter = new TypeFormatter(config.notificationNamespace);
+
+    if (options.connectionStateObservable) {
+      this.connectionStateObserver = new Subject<string>();
+      if (options.broadcaster === 'null') {
+        // Null broadcaster is always connected
+        this.connectionStateObserver.next('connected');
+      }
+      if (options.broadcaster === 'socket.io') {
+        (<Echo.SocketIoConnector>this._echo.connector).socket.on('connect', () => {
+          this.connectionStateObserver.next('connected');
+        })
+        (<Echo.SocketIoConnector>this._echo.connector).socket.on('disconnect', () => {
+          this.connectionStateObserver.next('disconnected');
+        })
+      }
+      if (this.options.broadcaster === 'pusher') {
+        (<Echo.PusherConnector>this._echo.connector).pusher.connection.bind('connected', ()  => {
+          this.connectionStateObserver.next('connected');
+        })
+        (<Echo.PusherConnector>this._echo.connector).pusher.connection.bind('disconnected', ()  => {
+          this.connectionStateObserver.next('disconnected');
+        })
+      }
+    }
   }
 
   /**

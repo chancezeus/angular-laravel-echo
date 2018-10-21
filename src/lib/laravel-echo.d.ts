@@ -117,6 +117,10 @@ declare namespace Echo {
      * The namespace to use for events
      */
     namespace?: string;
+    /**
+     * Weather to watch a connection state
+     */
+    connectionStateObservable?: boolean;
   }
 
   interface NullConfig extends Config {
