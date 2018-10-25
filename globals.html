@@ -75,15 +75,26 @@
 							<h3>Classes</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-class"><a href="classes/angularlaravelechomodule.html" class="tsd-kind-icon">Angular<wbr>Laravel<wbr>Echo<wbr>Module</a></li>
+								<li class="tsd-kind-class"><a href="classes/echointerceptor.html" class="tsd-kind-icon">Echo<wbr>Interceptor</a></li>
 								<li class="tsd-kind-class"><a href="classes/echoservice.html" class="tsd-kind-icon">Echo<wbr>Service</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface"><a href="interfaces/connectionevent.html" class="tsd-kind-icon">Connection<wbr>Event</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/echoconfig.html" class="tsd-kind-icon">Echo<wbr>Config</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/nullconnectionevent.html" class="tsd-kind-icon">Null<wbr>Connection<wbr>Event</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/nullechoconfig.html" class="tsd-kind-icon">Null<wbr>Echo<wbr>Config</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/pusherconnectionconnectinginevent.html" class="tsd-kind-icon">Pusher<wbr>Connection<wbr>Connecting<wbr>InEvent</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/pusherconnectionevent.html" class="tsd-kind-icon">Pusher<wbr>Connection<wbr>Event</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/pusherechoconfig.html" class="tsd-kind-icon">Pusher<wbr>Echo<wbr>Config</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/socketioconnectiondisconnectevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Disconnect<wbr>Event</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/socketioconnectionerrorevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Error<wbr>Event</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/socketioconnectionevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Event</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/socketioconnectionpongevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Pong<wbr>Event</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/socketioconnectionreconnectevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Reconnect<wbr>Event</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/socketioconnectiontimeoutevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Timeout<wbr>Event</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/socketioechoconfig.html" class="tsd-kind-icon">Socket<wbr>IoEcho<wbr>Config</a></li>
 							</ul>
 						</section>
@@ -91,6 +102,10 @@
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-type-alias"><a href="globals.html#channeltype" class="tsd-kind-icon">Channel<wbr>Type</a></li>
+								<li class="tsd-kind-type-alias"><a href="globals.html#connectionevents" class="tsd-kind-icon">Connection<wbr>Events</a></li>
+								<li class="tsd-kind-type-alias"><a href="globals.html#pusherconnectionevents" class="tsd-kind-icon">Pusher<wbr>Connection<wbr>Events</a></li>
+								<li class="tsd-kind-type-alias"><a href="globals.html#pusherstates" class="tsd-kind-icon">Pusher<wbr>States</a></li>
+								<li class="tsd-kind-type-alias"><a href="globals.html#socketioconnectionevents" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Events</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -110,12 +125,72 @@
 					<div class="tsd-signature tsd-kind-icon">Channel<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"public"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"presence"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"private"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/src/services/lib.service.ts#L53">src/services/lib.service.ts:53</a></li>
+							<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L54">src/services/lib.service.ts:54</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>Possible channel types</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="connectionevents" class="tsd-anchor"></a>
+					<h3>Connection<wbr>Events</h3>
+					<div class="tsd-signature tsd-kind-icon">Connection<wbr>Events<span class="tsd-signature-symbol">:</span> <a href="interfaces/nullconnectionevent.html" class="tsd-signature-type">NullConnectionEvent</a><span class="tsd-signature-symbol"> | </span><a href="globals.html#socketioconnectionevents" class="tsd-signature-type">SocketIoConnectionEvents</a><span class="tsd-signature-symbol"> | </span><a href="globals.html#pusherconnectionevents" class="tsd-signature-type">PusherConnectionEvents</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L210">src/services/lib.service.ts:210</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>All connection events</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="pusherconnectionevents" class="tsd-anchor"></a>
+					<h3>Pusher<wbr>Connection<wbr>Events</h3>
+					<div class="tsd-signature tsd-kind-icon">Pusher<wbr>Connection<wbr>Events<span class="tsd-signature-symbol">:</span> <a href="interfaces/pusherconnectionevent.html" class="tsd-signature-type">PusherConnectionEvent</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/pusherconnectionconnectinginevent.html" class="tsd-signature-type">PusherConnectionConnectingInEvent</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L205">src/services/lib.service.ts:205</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>All pusher events</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="pusherstates" class="tsd-anchor"></a>
+					<h3>Pusher<wbr>States</h3>
+					<div class="tsd-signature tsd-kind-icon">Pusher<wbr>States<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"initialized"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"connecting"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"connected"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"unavailable"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"failed"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"disconnected"</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L180">src/services/lib.service.ts:180</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Pusher connection states</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="socketioconnectionevents" class="tsd-anchor"></a>
+					<h3>Socket<wbr>IoConnection<wbr>Events</h3>
+					<div class="tsd-signature tsd-kind-icon">Socket<wbr>IoConnection<wbr>Events<span class="tsd-signature-symbol">:</span> <a href="interfaces/socketioconnectionevent.html" class="tsd-signature-type">SocketIoConnectionEvent</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/socketioconnectiondisconnectevent.html" class="tsd-signature-type">SocketIoConnectionDisconnectEvent</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/socketioconnectionerrorevent.html" class="tsd-signature-type">SocketIoConnectionErrorEvent</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/socketioconnectionreconnectevent.html" class="tsd-signature-type">SocketIoConnectionReconnectEvent</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/socketioconnectiontimeoutevent.html" class="tsd-signature-type">SocketIoConnectionTimeoutEvent</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/socketioconnectionpongevent.html" class="tsd-signature-type">SocketIoConnectionPongEvent</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L170">src/services/lib.service.ts:170</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>All Socket.io events</p>
 						</div>
 					</div>
 				</section>
@@ -128,7 +203,7 @@
 					<div class="tsd-signature tsd-kind-icon">ECHO_<wbr>CONFIG<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">InjectionToken</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/echoconfig.html" class="tsd-signature-type">EchoConfig</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new InjectionToken&lt;EchoConfig&gt;(&#x27;echo.config&#x27;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/src/services/lib.service.ts#L9">src/services/lib.service.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L10">src/services/lib.service.ts:10</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -156,22 +231,67 @@
 						<a href="classes/angularlaravelechomodule.html" class="tsd-kind-icon">Angular<wbr>Laravel<wbr>Echo<wbr>Module</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="classes/echointerceptor.html" class="tsd-kind-icon">Echo<wbr>Interceptor</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="classes/echoservice.html" class="tsd-kind-icon">Echo<wbr>Service</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/connectionevent.html" class="tsd-kind-icon">Connection<wbr>Event</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/echoconfig.html" class="tsd-kind-icon">Echo<wbr>Config</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/nullconnectionevent.html" class="tsd-kind-icon">Null<wbr>Connection<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/nullechoconfig.html" class="tsd-kind-icon">Null<wbr>Echo<wbr>Config</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/pusherconnectionconnectinginevent.html" class="tsd-kind-icon">Pusher<wbr>Connection<wbr>Connecting<wbr>InEvent</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/pusherconnectionevent.html" class="tsd-kind-icon">Pusher<wbr>Connection<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/pusherechoconfig.html" class="tsd-kind-icon">Pusher<wbr>Echo<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/socketioconnectiondisconnectevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Disconnect<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/socketioconnectionerrorevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Error<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/socketioconnectionevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/socketioconnectionpongevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Pong<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/socketioconnectionreconnectevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Reconnect<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/socketioconnectiontimeoutevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Timeout<wbr>Event</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/socketioechoconfig.html" class="tsd-kind-icon">Socket<wbr>IoEcho<wbr>Config</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#channeltype" class="tsd-kind-icon">Channel<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#connectionevents" class="tsd-kind-icon">Connection<wbr>Events</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#pusherconnectionevents" class="tsd-kind-icon">Pusher<wbr>Connection<wbr>Events</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#pusherstates" class="tsd-kind-icon">Pusher<wbr>States</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#socketioconnectionevents" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Events</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#echo_config" class="tsd-kind-icon">ECHO_<wbr>CONFIG</a>

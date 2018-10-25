@@ -67,7 +67,8 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>The service class configuration, use this as something like:</p>
+						<p>The service class, use this as something like
+						(or use the <a href="angularlaravelechomodule.html#forroot">AngularLaravelEchoModule.forRoot</a> method):</p>
 					</div>
 					<pre><code class="lang-js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> echoConfig: SocketIoEchoConfig = {
   <span class="hljs-attr">userModel</span>: <span class="hljs-string">'App.User'</span>,
@@ -122,7 +123,10 @@
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="echoservice.html#connected" class="tsd-kind-icon">connected</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="echoservice.html#connectionstate" class="tsd-kind-icon">connection<wbr>State</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="echoservice.html#echo" class="tsd-kind-icon">echo</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="echoservice.html#rawconnectionstate" class="tsd-kind-icon">raw<wbr>Connection<wbr>State</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="echoservice.html#socketid" class="tsd-kind-icon">socket<wbr>Id</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -156,7 +160,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/src/services/lib.service.ts#L163">src/services/lib.service.ts:163</a></li>
+									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L323">src/services/lib.service.ts:323</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -200,15 +204,37 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/src/services/lib.service.ts#L190">src/services/lib.service.ts:190</a></li>
+									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L474">src/services/lib.service.ts:474</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Is the socket connected</p>
+									<p>Is the socket currently connected</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="connectionstate" class="tsd-anchor"></a>
+					<h3>connection<wbr>State</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> connectionState<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L490">src/services/lib.service.ts:490</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Observable of connection state changes, emits true when connected and false when disconnected</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -222,7 +248,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/src/services/lib.service.ts#L206">src/services/lib.service.ts:206</a></li>
+									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L504">src/services/lib.service.ts:504</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -231,6 +257,50 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/echo.echostatic.html" class="tsd-signature-type">EchoStatic</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="rawconnectionstate" class="tsd-anchor"></a>
+					<h3>raw<wbr>Connection<wbr>State</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> rawConnectionState<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="../globals.html#connectionevents" class="tsd-signature-type">ConnectionEvents</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L497">src/services/lib.service.ts:497</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Observable of raw events of the underlying connection</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><a href="../globals.html#connectionevents" class="tsd-signature-type">ConnectionEvents</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="socketid" class="tsd-anchor"></a>
+					<h3>socket<wbr>Id</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> socketId<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L511">src/services/lib.service.ts:511</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>The socket ID</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -247,7 +317,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/src/services/lib.service.ts#L434">src/services/lib.service.ts:434</a></li>
+									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L739">src/services/lib.service.ts:739</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -285,7 +355,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/src/services/lib.service.ts#L538">src/services/lib.service.ts:538</a></li>
+									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L843">src/services/lib.service.ts:843</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -317,7 +387,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/src/services/lib.service.ts#L456">src/services/lib.service.ts:456</a></li>
+									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L761">src/services/lib.service.ts:761</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -349,7 +419,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/src/services/lib.service.ts#L554">src/services/lib.service.ts:554</a></li>
+									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L859">src/services/lib.service.ts:859</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -381,7 +451,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/src/services/lib.service.ts#L479">src/services/lib.service.ts:479</a></li>
+									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L784">src/services/lib.service.ts:784</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -419,7 +489,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/src/services/lib.service.ts#L499">src/services/lib.service.ts:499</a></li>
+									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L804">src/services/lib.service.ts:804</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -457,7 +527,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/src/services/lib.service.ts#L382">src/services/lib.service.ts:382</a></li>
+									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L687">src/services/lib.service.ts:687</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -500,7 +570,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/src/services/lib.service.ts#L416">src/services/lib.service.ts:416</a></li>
+									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L721">src/services/lib.service.ts:721</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -523,7 +593,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/src/services/lib.service.ts#L522">src/services/lib.service.ts:522</a></li>
+									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L827">src/services/lib.service.ts:827</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -555,7 +625,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/src/services/lib.service.ts#L570">src/services/lib.service.ts:570</a></li>
+									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L875">src/services/lib.service.ts:875</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -587,7 +657,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/35ff0f8/src/lib/src/services/lib.service.ts#L588">src/services/lib.service.ts:588</a></li>
+									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L893">src/services/lib.service.ts:893</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -636,6 +706,9 @@
 					<li class=" tsd-kind-class">
 						<a href="angularlaravelechomodule.html" class="tsd-kind-icon">Angular<wbr>Laravel<wbr>Echo<wbr>Module</a>
 					</li>
+					<li class=" tsd-kind-class">
+						<a href="echointerceptor.html" class="tsd-kind-icon">Echo<wbr>Interceptor</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
@@ -648,7 +721,16 @@
 								<a href="echoservice.html#connected" class="tsd-kind-icon">connected</a>
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="echoservice.html#connectionstate" class="tsd-kind-icon">connection<wbr>State</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
 								<a href="echoservice.html#echo" class="tsd-kind-icon">echo</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="echoservice.html#rawconnectionstate" class="tsd-kind-icon">raw<wbr>Connection<wbr>State</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="echoservice.html#socketid" class="tsd-kind-icon">socket<wbr>Id</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="echoservice.html#join" class="tsd-kind-icon">join</a>
@@ -688,19 +770,61 @@
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface">
+						<a href="../interfaces/connectionevent.html" class="tsd-kind-icon">Connection<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="../interfaces/echoconfig.html" class="tsd-kind-icon">Echo<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/nullconnectionevent.html" class="tsd-kind-icon">Null<wbr>Connection<wbr>Event</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/nullechoconfig.html" class="tsd-kind-icon">Null<wbr>Echo<wbr>Config</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="../interfaces/pusherconnectionconnectinginevent.html" class="tsd-kind-icon">Pusher<wbr>Connection<wbr>Connecting<wbr>InEvent</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/pusherconnectionevent.html" class="tsd-kind-icon">Pusher<wbr>Connection<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="../interfaces/pusherechoconfig.html" class="tsd-kind-icon">Pusher<wbr>Echo<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/socketioconnectiondisconnectevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Disconnect<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/socketioconnectionerrorevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Error<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/socketioconnectionevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/socketioconnectionpongevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Pong<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/socketioconnectionreconnectevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Reconnect<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/socketioconnectiontimeoutevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Timeout<wbr>Event</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/socketioechoconfig.html" class="tsd-kind-icon">Socket<wbr>IoEcho<wbr>Config</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="../globals.html#channeltype" class="tsd-kind-icon">Channel<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#connectionevents" class="tsd-kind-icon">Connection<wbr>Events</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#pusherconnectionevents" class="tsd-kind-icon">Pusher<wbr>Connection<wbr>Events</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#pusherstates" class="tsd-kind-icon">Pusher<wbr>States</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#socketioconnectionevents" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Events</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="../globals.html#echo_config" class="tsd-kind-icon">ECHO_<wbr>CONFIG</a>

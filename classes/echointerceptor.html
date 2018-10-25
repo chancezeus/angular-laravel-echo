@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>PusherEchoConfig | Angular Laravel Echo</title>
+	<title>EchoInterceptor | Angular Laravel Echo</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,27 +54,46 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="pusherechoconfig.html">PusherEchoConfig</a>
+					<a href="echointerceptor.html">EchoInterceptor</a>
 				</li>
 			</ul>
-			<h1>Interface PusherEchoConfig</h1>
+			<h1>Class EchoInterceptor</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>An http interceptor to automatically add the socket ID header, use this as something like
+						(or use the <a href="angularlaravelechomodule.html#forroot">AngularLaravelEchoModule.forRoot</a> method):</p>
+					</div>
+					<pre><code class="lang-js">@NgModule({
+  ...
+  providers: [
+    ...
+    { <span class="hljs-attr">provide</span>: HTTP_INTERCEPTORS, <span class="hljs-attr">useClass</span>: EchoInterceptor, <span class="hljs-attr">multi</span>: <span class="hljs-literal">true</span> }
+    ...
+  ]
+  ...
+})
+</code></pre>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="echoconfig.html" class="tsd-signature-type">EchoConfig</a>
-						<ul class="tsd-hierarchy">
-							<li>
-								<span class="target">PusherEchoConfig</span>
-							</li>
-						</ul>
+						<span class="target">EchoInterceptor</span>
 					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implements</h3>
+				<ul class="tsd-hierarchy">
+					<li><span class="tsd-signature-type">HttpInterceptor</span></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -82,65 +101,73 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Properties</h3>
+							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="pusherechoconfig.html#notificationnamespace" class="tsd-kind-icon">notification<wbr>Namespace</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="pusherechoconfig.html#options" class="tsd-kind-icon">options</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="pusherechoconfig.html#usermodel" class="tsd-kind-icon">user<wbr>Model</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="echointerceptor.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="echointerceptor.html#intercept" class="tsd-kind-icon">intercept</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="notificationnamespace" class="tsd-anchor"></a>
-					<h3>notification<wbr>Namespace</h3>
-					<div class="tsd-signature tsd-kind-icon">notification<wbr>Namespace<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="echoconfig.html">EchoConfig</a>.<a href="echoconfig.html#notificationnamespace">notificationNamespace</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L23">src/services/lib.service.ts:23</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The name of the namespace for notifications of the backend application</p>
-						</div>
-					</div>
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Echo<wbr>Interceptor<span class="tsd-signature-symbol">(</span>echoService<span class="tsd-signature-symbol">: </span><a href="echoservice.html" class="tsd-signature-type">EchoService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="echointerceptor.html" class="tsd-signature-type">EchoInterceptor</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/interceptor.service.ts#L23">src/services/interceptor.service.ts:23</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>echoService: <a href="echoservice.html" class="tsd-signature-type">EchoService</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="echointerceptor.html" class="tsd-signature-type">EchoInterceptor</a></h4>
+						</li>
+					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
-					<a name="options" class="tsd-anchor"></a>
-					<h3>options</h3>
-					<div class="tsd-signature tsd-kind-icon">options<span class="tsd-signature-symbol">:</span> <a href="echo.pusherconfig.html" class="tsd-signature-type">PusherConfig</a></div>
-					<aside class="tsd-sources">
-						<p>Overrides <a href="echoconfig.html">EchoConfig</a>.<a href="echoconfig.html#options">options</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L41">src/services/lib.service.ts:41</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Laravel Echo configuration</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="usermodel" class="tsd-anchor"></a>
-					<h3>user<wbr>Model</h3>
-					<div class="tsd-signature tsd-kind-icon">user<wbr>Model<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="echoconfig.html">EchoConfig</a>.<a href="echoconfig.html#usermodel">userModel</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L19">src/services/lib.service.ts:19</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The name of the user model of the backend application</p>
-						</div>
-					</div>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="intercept" class="tsd-anchor"></a>
+					<h3>intercept</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">intercept<span class="tsd-signature-symbol">(</span>req<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HttpRequest</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span>, next<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HttpHandler</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">HttpEvent</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/interceptor.service.ts#L27">src/services/interceptor.service.ts:27</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>req: <span class="tsd-signature-type">HttpRequest</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+								<li>
+									<h5>next: <span class="tsd-signature-type">HttpHandler</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">HttpEvent</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -155,70 +182,67 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class">
-						<a href="../classes/angularlaravelechomodule.html" class="tsd-kind-icon">Angular<wbr>Laravel<wbr>Echo<wbr>Module</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/echointerceptor.html" class="tsd-kind-icon">Echo<wbr>Interceptor</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/echoservice.html" class="tsd-kind-icon">Echo<wbr>Service</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="connectionevent.html" class="tsd-kind-icon">Connection<wbr>Event</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="echoconfig.html" class="tsd-kind-icon">Echo<wbr>Config</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="nullconnectionevent.html" class="tsd-kind-icon">Null<wbr>Connection<wbr>Event</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="nullechoconfig.html" class="tsd-kind-icon">Null<wbr>Echo<wbr>Config</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="pusherconnectionconnectinginevent.html" class="tsd-kind-icon">Pusher<wbr>Connection<wbr>Connecting<wbr>InEvent</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="pusherconnectionevent.html" class="tsd-kind-icon">Pusher<wbr>Connection<wbr>Event</a>
+						<a href="angularlaravelechomodule.html" class="tsd-kind-icon">Angular<wbr>Laravel<wbr>Echo<wbr>Module</a>
 					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface">
-						<a href="pusherechoconfig.html" class="tsd-kind-icon">Pusher<wbr>Echo<wbr>Config</a>
+					<li class="current tsd-kind-class">
+						<a href="echointerceptor.html" class="tsd-kind-icon">Echo<wbr>Interceptor</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="pusherechoconfig.html#notificationnamespace" class="tsd-kind-icon">notification<wbr>Namespace</a>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="echointerceptor.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
-								<a href="pusherechoconfig.html#options" class="tsd-kind-icon">options</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="pusherechoconfig.html#usermodel" class="tsd-kind-icon">user<wbr>Model</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="echointerceptor.html#intercept" class="tsd-kind-icon">intercept</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface">
-						<a href="socketioconnectiondisconnectevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Disconnect<wbr>Event</a>
+					<li class=" tsd-kind-class">
+						<a href="echoservice.html" class="tsd-kind-icon">Echo<wbr>Service</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="socketioconnectionerrorevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Error<wbr>Event</a>
+						<a href="../interfaces/connectionevent.html" class="tsd-kind-icon">Connection<wbr>Event</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="socketioconnectionevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Event</a>
+						<a href="../interfaces/echoconfig.html" class="tsd-kind-icon">Echo<wbr>Config</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="socketioconnectionpongevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Pong<wbr>Event</a>
+						<a href="../interfaces/nullconnectionevent.html" class="tsd-kind-icon">Null<wbr>Connection<wbr>Event</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="socketioconnectionreconnectevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Reconnect<wbr>Event</a>
+						<a href="../interfaces/nullechoconfig.html" class="tsd-kind-icon">Null<wbr>Echo<wbr>Config</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="socketioconnectiontimeoutevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Timeout<wbr>Event</a>
+						<a href="../interfaces/pusherconnectionconnectinginevent.html" class="tsd-kind-icon">Pusher<wbr>Connection<wbr>Connecting<wbr>InEvent</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="socketioechoconfig.html" class="tsd-kind-icon">Socket<wbr>IoEcho<wbr>Config</a>
+						<a href="../interfaces/pusherconnectionevent.html" class="tsd-kind-icon">Pusher<wbr>Connection<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/pusherechoconfig.html" class="tsd-kind-icon">Pusher<wbr>Echo<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/socketioconnectiondisconnectevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Disconnect<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/socketioconnectionerrorevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Error<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/socketioconnectionevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/socketioconnectionpongevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Pong<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/socketioconnectionreconnectevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Reconnect<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/socketioconnectiontimeoutevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Timeout<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/socketioechoconfig.html" class="tsd-kind-icon">Socket<wbr>IoEcho<wbr>Config</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="../globals.html#channeltype" class="tsd-kind-icon">Channel<wbr>Type</a>

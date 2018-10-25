@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>PusherEchoConfig | Angular Laravel Echo</title>
+	<title>SocketIoConnectionReconnectEvent | Angular Laravel Echo</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,24 +54,31 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="pusherechoconfig.html">PusherEchoConfig</a>
+					<a href="socketioconnectionreconnectevent.html">SocketIoConnectionReconnectEvent</a>
 				</li>
 			</ul>
-			<h1>Interface PusherEchoConfig</h1>
+			<h1>Interface SocketIoConnectionReconnectEvent</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Socket.io reconnect event</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="echoconfig.html" class="tsd-signature-type">EchoConfig</a>
+						<a href="socketioconnectionevent.html" class="tsd-signature-type">SocketIoConnectionEvent</a>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">PusherEchoConfig</span>
+								<span class="target">SocketIoConnectionReconnectEvent</span>
 							</li>
 						</ul>
 					</li>
@@ -84,9 +91,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="pusherechoconfig.html#notificationnamespace" class="tsd-kind-icon">notification<wbr>Namespace</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="pusherechoconfig.html#options" class="tsd-kind-icon">options</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="pusherechoconfig.html#usermodel" class="tsd-kind-icon">user<wbr>Model</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="socketioconnectionreconnectevent.html#attemptnumber" class="tsd-kind-icon">attempt<wbr>Number</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="socketioconnectionreconnectevent.html#type" class="tsd-kind-icon">type</a></li>
 							</ul>
 						</section>
 					</div>
@@ -94,51 +100,34 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="notificationnamespace" class="tsd-anchor"></a>
-					<h3>notification<wbr>Namespace</h3>
-					<div class="tsd-signature tsd-kind-icon">notification<wbr>Namespace<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="attemptnumber" class="tsd-anchor"></a>
+					<h3>attempt<wbr>Number</h3>
+					<div class="tsd-signature tsd-kind-icon">attempt<wbr>Number<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="echoconfig.html">EchoConfig</a>.<a href="echoconfig.html#notificationnamespace">notificationNamespace</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L23">src/services/lib.service.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L136">src/services/lib.service.ts:136</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The name of the namespace for notifications of the backend application</p>
+							<p>The current attempt count</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
-					<a name="options" class="tsd-anchor"></a>
-					<h3>options</h3>
-					<div class="tsd-signature tsd-kind-icon">options<span class="tsd-signature-symbol">:</span> <a href="echo.pusherconfig.html" class="tsd-signature-type">PusherConfig</a></div>
+					<a name="type" class="tsd-anchor"></a>
+					<h3>type</h3>
+					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"reconnect"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"reconnect_attempt"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"reconnecting"</span></div>
 					<aside class="tsd-sources">
-						<p>Overrides <a href="echoconfig.html">EchoConfig</a>.<a href="echoconfig.html#options">options</a></p>
+						<p>Overrides <a href="socketioconnectionevent.html">SocketIoConnectionEvent</a>.<a href="socketioconnectionevent.html#type">type</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L41">src/services/lib.service.ts:41</a></li>
+							<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L132">src/services/lib.service.ts:132</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Laravel Echo configuration</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="usermodel" class="tsd-anchor"></a>
-					<h3>user<wbr>Model</h3>
-					<div class="tsd-signature tsd-kind-icon">user<wbr>Model<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="echoconfig.html">EchoConfig</a>.<a href="echoconfig.html#usermodel">userModel</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/chancezeus/angular-laravel-echo/blob/67e6f22/src/lib/src/services/lib.service.ts#L19">src/services/lib.service.ts:19</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The name of the user model of the backend application</p>
+							<p>The event type</p>
 						</div>
 					</div>
 				</section>
@@ -181,24 +170,9 @@
 					<li class=" tsd-kind-interface">
 						<a href="pusherconnectionevent.html" class="tsd-kind-icon">Pusher<wbr>Connection<wbr>Event</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface">
+					<li class=" tsd-kind-interface">
 						<a href="pusherechoconfig.html" class="tsd-kind-icon">Pusher<wbr>Echo<wbr>Config</a>
-						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="pusherechoconfig.html#notificationnamespace" class="tsd-kind-icon">notification<wbr>Namespace</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
-								<a href="pusherechoconfig.html#options" class="tsd-kind-icon">options</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="pusherechoconfig.html#usermodel" class="tsd-kind-icon">user<wbr>Model</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-interface">
 						<a href="socketioconnectiondisconnectevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Disconnect<wbr>Event</a>
 					</li>
@@ -211,9 +185,21 @@
 					<li class=" tsd-kind-interface">
 						<a href="socketioconnectionpongevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Pong<wbr>Event</a>
 					</li>
-					<li class=" tsd-kind-interface">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface">
 						<a href="socketioconnectionreconnectevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Reconnect<wbr>Event</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="socketioconnectionreconnectevent.html#attemptnumber" class="tsd-kind-icon">attempt<wbr>Number</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
+								<a href="socketioconnectionreconnectevent.html#type" class="tsd-kind-icon">type</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-interface">
 						<a href="socketioconnectiontimeoutevent.html" class="tsd-kind-icon">Socket<wbr>IoConnection<wbr>Timeout<wbr>Event</a>
 					</li>
