@@ -1,6 +1,6 @@
 import {Inject, Injectable, InjectionToken, NgZone} from '@angular/core';
 import {Observable, of, ReplaySubject, Subject, throwError} from 'rxjs';
-import {distinctUntilChanged, map, shareReplay} from 'rxjs/operators';
+import {distinctUntilChanged, map, shareReplay, startWith} from 'rxjs/operators';
 import * as Echo from 'laravel-echo';
 import * as io from 'socket.io-client';
 
@@ -346,7 +346,6 @@ export class EchoService {
     switch (options.broadcaster) {
       case 'null':
         this.connectionState$ = of<NullConnectionEvent>({type: 'connected'});
-        this.connected$ = of(true);
         break;
       case 'socket.io':
         this.connectionState$ = new Observable<SocketIoConnectionEvents>(subscriber => {
@@ -428,12 +427,6 @@ export class EchoService {
             socket.off('pong', handlePong);
           };
         }).pipe(shareReplay(1));
-
-        this.connected$ = (<Observable<SocketIoConnectionEvents>>this.connectionState$).pipe(
-          map(state => state.type === 'connect' || state.type === 'reconnect'),
-          distinctUntilChanged(),
-          shareReplay(1)
-        );
         break;
       case 'pusher':
         this.connectionState$ = new Observable<PusherConnectionEvents>(subscriber => {
@@ -455,17 +448,18 @@ export class EchoService {
             socket.unbind('connecting_in', handleConnectingIn);
           };
         }).pipe(shareReplay(1));
-
-        this.connected$ = (<Observable<PusherConnectionEvents>>this.connectionState$).pipe(
-          map(state => state.type === 'connected'),
-          distinctUntilChanged(),
-          shareReplay(1)
-        );
         break;
       default:
-        this.connected$ = this.connectionState$ = throwError(new Error('unsupported'));
+        this.connectionState$ = throwError(new Error('unsupported'));
         break;
     }
+
+    this.connected$ = (<Observable<SocketIoConnectionEvents>>this.connectionState$).pipe(
+      map(() => this.connected),
+      startWith(this.connected),
+      distinctUntilChanged(),
+      shareReplay(1)
+    );
   }
 
   /**
