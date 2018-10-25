@@ -69,6 +69,7 @@ return Promise.resolve()
           'rxjs/operators/distinctUntilChanged': 'Rx.Observable.prototype',
           'rxjs/operators/map': 'Rx.Observable.prototype',
           'rxjs/operators/shareReplay': 'Rx.Observable.prototype',
+          'rxjs/operators/startWith': 'Rx.Observable.prototype',
           'socket.io-client': 'io',
         },
         sourceMap: true,
@@ -93,6 +94,7 @@ return Promise.resolve()
         'rxjs/operators/distinctUntilChanged',
         'rxjs/operators/map',
         'rxjs/operators/shareReplay',
+        'rxjs/operators/startWith',
         'socket.io-client',
       ],
       plugins: [
