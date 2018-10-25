@@ -1,5 +1,6 @@
 import {Inject, Injectable, InjectionToken, NgZone} from '@angular/core';
-import {Observable, ReplaySubject, Subject, throwError} from 'rxjs';
+import {Observable, of, ReplaySubject, Subject, throwError} from 'rxjs';
+import {distinctUntilChanged, map, shareReplay} from 'rxjs/operators';
 import * as Echo from 'laravel-echo';
 import * as io from 'socket.io-client';
 
@@ -50,7 +51,163 @@ export interface SocketIoEchoConfig extends EchoConfig {
 /**
  * Possible channel types
  */
-export declare type ChannelType = 'public' | 'presence' | 'private';
+export type ChannelType = 'public' | 'presence' | 'private';
+
+/**
+ * Raw events from the underlying connection
+ */
+export interface ConnectionEvent {
+  /**
+   * The event type
+   */
+  type: string;
+}
+
+/**
+ * Null connection events
+ */
+export interface NullConnectionEvent extends ConnectionEvent {
+  /**
+   * The event type
+   */
+  type: 'connected'
+}
+
+/**
+ * Socket.io connection events
+ */
+export interface SocketIoConnectionEvent extends ConnectionEvent {
+  /**
+   * The event type
+   */
+  type: 'connect' |
+    'connect_error' |
+    'connect_timeout' |
+    'error' |
+    'disconnect' |
+    'reconnect' |
+    'reconnect_attempt' |
+    'reconnecting' |
+    'reconnect_error' |
+    'reconnect_failed' |
+    'ping' |
+    'pong';
+}
+
+/**
+ * Socket.io disconnect event
+ */
+export interface SocketIoConnectionDisconnectEvent extends SocketIoConnectionEvent {
+  /**
+   * The event type
+   */
+  type: 'disconnect';
+  /**
+   * The reason, either "io server disconnect" or "io client disconnect"
+   */
+  reason: string;
+}
+
+/**
+ * Socket.io (*_)error event
+ */
+export interface SocketIoConnectionErrorEvent extends SocketIoConnectionEvent {
+  /**
+   * The event type
+   */
+  type: 'connect_error' | 'error' | 'reconnect_error';
+  /**
+   * The error object
+   */
+  error: any;
+}
+
+/**
+ * Socket.io reconnect event
+ */
+export interface SocketIoConnectionReconnectEvent extends SocketIoConnectionEvent {
+  /**
+   * The event type
+   */
+  type: 'reconnect' | 'reconnect_attempt' | 'reconnecting';
+  /**
+   * The current attempt count
+   */
+  attemptNumber: number;
+}
+
+/**
+ * Socket.io timeout event
+ */
+export interface SocketIoConnectionTimeoutEvent extends SocketIoConnectionEvent {
+  /**
+   * The event type
+   */
+  type: 'connect_timeout';
+  /**
+   * The timeout
+   */
+  timeout: number;
+}
+
+/**
+ * Socket.io pong event
+ */
+export interface SocketIoConnectionPongEvent extends SocketIoConnectionEvent {
+  /**
+   * The event type
+   */
+  type: 'pong';
+  /**
+   * The latency
+   */
+  latency: number;
+}
+
+/**
+ * All Socket.io events
+ */
+export type SocketIoConnectionEvents = SocketIoConnectionEvent |
+  SocketIoConnectionDisconnectEvent |
+  SocketIoConnectionErrorEvent |
+  SocketIoConnectionReconnectEvent |
+  SocketIoConnectionTimeoutEvent |
+  SocketIoConnectionPongEvent;
+
+/**
+ * Pusher connection states
+ */
+export type PusherStates = 'initialized' |
+  'connecting' |
+  'connected' |
+  'unavailable' |
+  'failed' |
+  'disconnected';
+
+/**
+ * Pusher connection events
+ */
+export interface PusherConnectionEvent {
+  type: PusherStates | 'connecting_in';
+}
+
+/**
+ * Pusher connecting in event
+ */
+export interface PusherConnectionConnectingInEvent extends PusherConnectionEvent {
+  type: 'connecting_in';
+  delay: number;
+}
+
+/**
+ * All pusher events
+ */
+export type PusherConnectionEvents = PusherConnectionEvent | PusherConnectionConnectingInEvent;
+
+/**
+ * All connection events
+ */
+export type ConnectionEvents = NullConnectionEvent | SocketIoConnectionEvents | PusherConnectionEvents;
 
 /**
  * @hidden
@@ -115,7 +272,8 @@ class TypeFormatter {
 }
 
 /**
- * The service class configuration, use this as something like:
+ * The service class, use this as something like
+ * (or use the [[AngularLaravelEchoModule.forRoot]] method):
  *
  * ```js
  * export const echoConfig: SocketIoEchoConfig = {
@@ -156,6 +314,8 @@ export class EchoService {
   private readonly _echo: Echo.EchoStatic;
   private readonly options: Echo.Config;
   private readonly typeFormatter: TypeFormatter;
+  private readonly connected$: Observable<boolean>;
+  private readonly connectionState$: Observable<ConnectionEvents>;
 
   private readonly channels: Array<Channel> = [];
   private readonly notificationListeners: { [key: string]: Subject<any> } = {};
@@ -182,10 +342,134 @@ export class EchoService {
     this.options = this.echo.connector.options;
 
     this.typeFormatter = new TypeFormatter(config.notificationNamespace);
+
+    switch (options.broadcaster) {
+      case 'null':
+        this.connectionState$ = of<NullConnectionEvent>({type: 'connected'});
+        this.connected$ = of(true);
+        break;
+      case 'socket.io':
+        this.connectionState$ = new Observable<SocketIoConnectionEvents>(subscriber => {
+          const socket = (<Echo.SocketIoConnector>this._echo.connector).socket;
+
+          const handleConnect = () => this.ngZone.run(
+            () => subscriber.next({type: 'connect'})
+          );
+
+          const handleConnectError = (error: any) => this.ngZone.run(
+            () => subscriber.next({type: 'connect_error', error})
+          );
+
+          const handleConnectTimeout = (timeout: number) => this.ngZone.run(
+            () => subscriber.next({type: 'connect_timeout', timeout})
+          );
+
+          const handleError = (error: any) => this.ngZone.run(
+            () => subscriber.next({type: 'error', error})
+          );
+
+          const handleDisconnect = (reason: string) => this.ngZone.run(
+            () => subscriber.next({type: 'disconnect', reason})
+          );
+
+          const handleReconnect = (attemptNumber: number) => this.ngZone.run(
+            () => subscriber.next({type: 'reconnect', attemptNumber})
+          );
+
+          const handleReconnectAttempt = (attemptNumber: number) => this.ngZone.run(
+            () => subscriber.next({type: 'reconnect_attempt', attemptNumber})
+          );
+
+          const handleReconnecting = (attemptNumber: number) => this.ngZone.run(
+            () => subscriber.next({type: 'reconnecting', attemptNumber})
+          );
+
+          const handleReconnectError = (error: any) => this.ngZone.run(
+            () => subscriber.next({type: 'reconnect_error', error})
+          );
+
+          const handleReconnectFailed = () => this.ngZone.run(
+            () => subscriber.next({type: 'reconnect_failed'})
+          );
+
+          const handlePing = () => this.ngZone.run(
+            () => subscriber.next({type: 'ping'})
+          );
+
+          const handlePong = (latency: number) => this.ngZone.run(
+            () => subscriber.next({type: 'pong', latency})
+          );
+
+          socket.on('connect', handleConnect);
+          socket.on('connect_error', handleConnectError);
+          socket.on('connect_timeout', handleConnectTimeout);
+          socket.on('error', handleError);
+          socket.on('disconnect', handleDisconnect);
+          socket.on('reconnect', handleReconnect);
+          socket.on('reconnect_attempt', handleReconnectAttempt);
+          socket.on('reconnecting', handleReconnecting);
+          socket.on('reconnect_error', handleReconnectError);
+          socket.on('reconnect_failed', handleReconnectFailed);
+          socket.on('ping', handlePing);
+          socket.on('pong', handlePong);
+
+          return () => {
+            socket.off('connect', handleConnect);
+            socket.off('connect_error', handleConnectError);
+            socket.off('connect_timeout', handleConnectTimeout);
+            socket.off('error', handleError);
+            socket.off('disconnect', handleDisconnect);
+            socket.off('reconnect', handleReconnect);
+            socket.off('reconnect_attempt', handleReconnectAttempt);
+            socket.off('reconnecting', handleReconnecting);
+            socket.off('reconnect_error', handleReconnectError);
+            socket.off('reconnect_failed', handleReconnectFailed);
+            socket.off('ping', handlePing);
+            socket.off('pong', handlePong);
+          };
+        }).pipe(shareReplay(1));
+
+        this.connected$ = (<Observable<SocketIoConnectionEvents>>this.connectionState$).pipe(
+          map(state => state.type === 'connect' || state.type === 'reconnect'),
+          distinctUntilChanged(),
+          shareReplay(1)
+        );
+        break;
+      case 'pusher':
+        this.connectionState$ = new Observable<PusherConnectionEvents>(subscriber => {
+          const socket = (<Echo.PusherConnector>this._echo.connector).pusher.connection;
+
+          const handleStateChange = ({current}: { current: PusherStates }) => this.ngZone.run(
+            () => subscriber.next({type: current})
+          );
+
+          const handleConnectingIn = (delay: number) => this.ngZone.run(
+            () => subscriber.next({type: 'connecting_in', delay})
+          );
+
+          socket.bind('state_change', handleStateChange);
+          socket.bind('connecting_in', handleConnectingIn);
+
+          return () => {
+            socket.unbind('state_change', handleStateChange);
+            socket.unbind('connecting_in', handleConnectingIn);
+          };
+        }).pipe(shareReplay(1));
+
+        this.connected$ = (<Observable<PusherConnectionEvents>>this.connectionState$).pipe(
+          map(state => state.type === 'connected'),
+          distinctUntilChanged(),
+          shareReplay(1)
+        );
+        break;
+      default:
+        this.connected$ = this.connectionState$ = throwError(new Error('unsupported'));
+        break;
+    }
   }
 
   /**
-   * Is the socket connected
+   * Is the socket currently connected
    */
   get connected(): boolean {
     if (this.options.broadcaster === 'null') {
@@ -201,10 +485,31 @@ export class EchoService {
   }
 
   /**
+   * Observable of connection state changes, emits true when connected and false when disconnected
+   */
+  get connectionState(): Observable<boolean> {
+    return this.connected$;
+  }
+
+  /**
+   * Observable of raw events of the underlying connection
+   */
+  get rawConnectionState(): Observable<ConnectionEvents> {
+    return this.connectionState$;
+  }
+
+  /**
    * The echo instance, can be used to implement any custom requirements outside of this service (remember to include NgZone.run calls)
    */
   get echo(): Echo.EchoStatic {
     return this._echo;
+  }
+
+  /**
+   * The socket ID
+   */
+  get socketId(): string {
+    return this.echo.socketId();
   }
 
   /**
