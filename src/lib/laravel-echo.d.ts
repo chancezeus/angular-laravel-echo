@@ -108,7 +108,7 @@ declare namespace Echo {
     /**
      * The broadcaster to use
      */
-    broadcaster: 'socket.io' | 'pusher' | 'null';
+    broadcaster?: 'socket.io' | 'pusher' | 'null';
     /**
      * The application CSRF token
      */
@@ -124,13 +124,16 @@ declare namespace Echo {
   }
 
   interface PusherConfig extends Config, pusher.Config {
-    broadcaster: 'pusher';
+    broadcaster?: 'pusher';
 
     /**
      * A pusher client instance to use
      */
     client?: Pusher;
-
+    /**
+     * The pusher host to connect to
+     */
+    host?: string | null;
     /**
      * The pusher auth key
      */
@@ -647,9 +650,6 @@ declare namespace Echo {
 
 declare var Echo: Echo.EchoStatic;
 
-/**
- * @hidden
- */
 declare module 'laravel-echo' {
-  export = Echo;
+  export default Echo;
 }

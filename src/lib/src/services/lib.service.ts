@@ -8,7 +8,7 @@ import {distinctUntilChanged} from 'rxjs/operators/distinctUntilChanged';
 import {map} from 'rxjs/operators/map';
 import {shareReplay} from 'rxjs/operators/shareReplay';
 import {startWith} from 'rxjs/operators/startWith';
-import * as Echo from 'laravel-echo';
+import Echo from 'laravel-echo';
 import * as io from 'socket.io-client';
 
 /**
@@ -694,6 +694,14 @@ export class EchoService {
 
     this.options.auth = this.options.auth || {};
     this.options.auth.headers = Object.assign({}, headers);
+
+    if (this.options.broadcaster === 'pusher') {
+      const connector = (<Echo.PusherConnector>this._echo.connector);
+
+      if (connector.pusher.config.auth !== this.options.auth) {
+        connector.pusher.config.auth = this.options.auth;
+      }
+    }
 
     if (this.userChannelName != newChannelName) {
       this.userChannelName = newChannelName;
