@@ -72,8 +72,9 @@ return Promise.resolve()
       external: [
         // List of dependencies
         // See https://github.com/rollup/rollup/wiki/JavaScript-API#external for more.
-        '@angular/core',
         '@angular/common',
+        '@angular/common/http',
+        '@angular/core',
         'laravel-echo',
         'pusher-js',
         'rxjs',

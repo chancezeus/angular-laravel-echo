@@ -1,7 +1,7 @@
 import {Inject, Injectable, InjectionToken, NgZone} from '@angular/core';
 import {Observable, of, ReplaySubject, Subject, throwError} from 'rxjs';
 import {distinctUntilChanged, map, shareReplay, startWith} from 'rxjs/operators';
-import * as Echo from 'laravel-echo';
+import Echo from 'laravel-echo';
 import * as io from 'socket.io-client';
 
 /**
@@ -687,6 +687,14 @@ export class EchoService {
 
     this.options.auth = this.options.auth || {};
     this.options.auth.headers = Object.assign({}, headers);
+
+    if (this.options.broadcaster === 'pusher') {
+      const connector = (<Echo.PusherConnector>this._echo.connector);
+
+      if (connector.pusher.config.auth !== this.options.auth) {
+        connector.pusher.config.auth = this.options.auth;
+      }
+    }
 
     if (this.userChannelName != newChannelName) {
       this.userChannelName = newChannelName;

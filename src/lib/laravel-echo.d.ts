@@ -650,9 +650,6 @@ declare namespace Echo {
 
 declare var Echo: Echo.EchoStatic;
 
-/**
- * @hidden
- */
 declare module 'laravel-echo' {
-  export = Echo;
+  export default Echo;
 }
