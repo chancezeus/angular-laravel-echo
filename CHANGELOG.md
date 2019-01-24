@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/chancezeus/angular-laravel-echo/compare/v1.1.11...v1.2.0) (2019-01-24)
+
+
+### Features
+
+* Add ability to listen for notifications on different channels ([4da69da](https://github.com/chancezeus/angular-laravel-echo/commit/4da69da))
+
+
+
 <a name="1.1.11"></a>
 ## [1.1.11](https://github.com/chancezeus/angular-laravel-echo/compare/v1.1.10...v1.1.11) (2018-12-22)
 
