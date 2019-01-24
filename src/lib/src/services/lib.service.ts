@@ -226,6 +226,9 @@ interface Channel {
   listeners: {
     [key: string]: Subject<any>;
   };
+  notificationListeners?: {
+    [key: string]: Subject<any>;
+  };
   users?: any[] | null;
 }
 
@@ -835,6 +838,34 @@ export class EchoService {
    */
   notification(type: string): Observable<any> {
     type = this.typeFormatter.format(type);
+
+    if (name && name !== this.userChannelName) {
+      const channel = this.requireChannelFromArray(name);
+
+      if (!channel.notificationListeners) {
+        channel.notificationListeners = {};
+
+        channel.channel.notification((notification: any) => {
+          const notificationType = this.typeFormatter.format(notification.type);
+
+          if (channel.notificationListeners) {
+            if (channel.notificationListeners[notificationType]) {
+              this.ngZone.run(() => channel.notificationListeners && channel.notificationListeners[notificationType].next(notification));
+            }
+
+            if (channel.notificationListeners['*']) {
+              this.ngZone.run(() => channel.notificationListeners && channel.notificationListeners['*'].next(notification));
+            }
+          }
+        });
+      }
+
+      if (!channel.notificationListeners[type]) {
+        channel.notificationListeners[type] = new Subject<any>();
+      }
+
+      return channel.notificationListeners[type].asObservable();
+    }
 
     if (!this.notificationListeners[type]) {
       this.notificationListeners[type] = new Subject<any>();
