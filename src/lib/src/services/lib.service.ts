@@ -219,6 +219,9 @@ interface Channel {
   listeners: {
     [key: string]: Subject<any>;
   };
+  notificationListeners?: {
+    [key: string]: Subject<any>;
+  };
   users?: any[] | null;
 }
 
@@ -767,6 +770,12 @@ export class EchoService {
 
       Object.keys(channel.listeners).forEach(key => channel.listeners[key].complete());
 
+      if (channel.notificationListeners) {
+        Object.keys(channel.notificationListeners).forEach(
+          key => channel.notificationListeners && channel.notificationListeners[key].complete()
+        );
+      }
+
       const index = this.channels.indexOf(channel);
       if (index !== -1) {
         this.channels.splice(index, 1);
@@ -824,10 +833,39 @@ export class EchoService {
    * Listen for notifications on the users private channel.
    *
    * @param type The type of notification to listen for or `*` for any
+   * @param name Optional a different channel to receive notifications on
    * @returns An observable that emits the notification of the specified type when it arrives
    */
-  notification(type: string): Observable<any> {
+  notification(type: string, name?: string): Observable<any> {
     type = this.typeFormatter.format(type);
+
+    if (name && name !== this.userChannelName) {
+      const channel = this.requireChannelFromArray(name);
+
+      if (!channel.notificationListeners) {
+        channel.notificationListeners = {};
+
+        channel.channel.notification((notification: any) => {
+          const notificationType = this.typeFormatter.format(notification.type);
+
+          if (channel.notificationListeners) {
+            if (channel.notificationListeners[notificationType]) {
+              this.ngZone.run(() => channel.notificationListeners && channel.notificationListeners[notificationType].next(notification));
+            }
+
+            if (channel.notificationListeners['*']) {
+              this.ngZone.run(() => channel.notificationListeners && channel.notificationListeners['*'].next(notification));
+            }
+          }
+        });
+      }
+
+      if (!channel.notificationListeners[type]) {
+        channel.notificationListeners[type] = new Subject<any>();
+      }
+
+      return channel.notificationListeners[type].asObservable();
+    }
 
     if (!this.notificationListeners[type]) {
       this.notificationListeners[type] = new Subject<any>();
